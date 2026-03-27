@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "name": "robot-hunter-portal",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
