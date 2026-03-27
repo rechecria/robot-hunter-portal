@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Filter, TrendingUp, Globe, AlertCircle, CheckCircle, Clock, Zap } from 'lucide-react';
+import { Search, Filter, TrendingUp, Globe, AlertCircle, CheckCircle, Clock, Zap, Database, HardDrive } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { companies, vehicles, marketData, painPoints, trends, categories, regions } from './data.js';
+import { useSupabaseData } from './useData.js';
 import './App.css';
 
 function App() {
+  const { companies, vehicles, marketData, painPoints, trends, categories, regions, loading, source } = useSupabaseData();
   const [activeSection, setActiveSection] = useState('home');
   const [searchTerm, setSearchTerm] = useState('');
   const [countryFilter, setCountryFilter] = useState('');
@@ -61,6 +62,10 @@ function App() {
             <button onClick={() => window.location.hash = '#dores'} className="text-sm text-stone-400 hover:text-amber-500 transition">Dores</button>
             <button onClick={() => window.location.hash = '#global'} className="text-sm text-stone-400 hover:text-amber-500 transition">Global</button>
             <button onClick={() => window.location.hash = '#tendencias'} className="text-sm text-stone-400 hover:text-amber-500 transition">Tendências</button>
+            <span className={`flex items-center gap-1.5 text-xs font-mono px-2 py-1 rounded ${source === 'supabase' ? 'bg-emerald-900/50 text-emerald-400' : 'bg-stone-800 text-stone-500'}`}>
+              {source === 'supabase' ? <Database size={10} /> : <HardDrive size={10} />}
+              {source === 'supabase' ? 'LIVE' : 'STATIC'}
+            </span>
           </div>
         </div>
       </nav>
