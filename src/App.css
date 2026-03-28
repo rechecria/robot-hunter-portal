@@ -1,126 +1,97 @@
-/* App-specific styles for Robot Hunter Portal */
+/* App-specific styles for Robot Hunter Portal — Light Theme */
 
-/* Dot grid background pattern */
-.dot-grid {
-  background-image: 
-    radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-position: 0 0;
-}
-
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0D0D0D;
+  background: #F8F9FA;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #404040;
-  border-radius: 4px;
+  background: #CBD5E1;
+  border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #C4652A;
 }
 
-/* Typography - Fonts loaded from index.html */
+/* Typography */
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #0D0D0D;
-  color: #F5F5F5;
+  background-color: #FFFFFF;
+  color: #1F2937;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
+  color: #111827;
 }
 
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Accent colors */
-.text-amber-600 {
-  color: #C4652A;
-}
-
-.text-amber-500 {
-  color: #D4A84B;
-}
-
-.text-green-600 {
-  color: #4ADE80;
-}
-
-/* Hover effects */
-button, a {
-  transition: all 0.3s ease;
-}
-
-/* Grid backgrounds */
-section {
-  position: relative;
-}
-
-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Responsive text sizing */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 3rem !important;
-  }
-  
-  h2 {
-    font-size: 2rem !important;
-  }
-}
-
-/* Animation utilities */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
 /* Focus states */
 input:focus, select:focus {
   outline: none;
   border-color: #C4652A !important;
-  box-shadow: 0 0 0 2px rgba(196, 101, 42, 0.1);
+  box-shadow: 0 0 0 3px rgba(196, 101, 42, 0.12);
 }
 
 /* Smooth transitions */
-* {
-  transition-property: color, background-color, border-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+button, a {
+  transition: all 0.2s ease;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(0,0,0,0.08), 0 4px 10px -5px rgba(0,0,0,0.04);
+}
+
+/* Subtle grid pattern on sections */
+.section-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem !important; }
+  h2 { font-size: 1.75rem !important; }
+}
+
+/* Tab pill active animation */
+.tab-active {
+  position: relative;
+}
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #C4652A;
+  border-radius: 1px;
+}
+
+/* Stat card gradient accent */
+.stat-accent {
+  border-top: 3px solid #C4652A;
+}
+
+/* Company card expand transition */
+.expand-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
